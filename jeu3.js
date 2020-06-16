@@ -1,5 +1,6 @@
-	var objets;
-	var h1;
+var but1 = 0;
+var but2 = 0;
+var but3 = 0;
 
 class jeu3 extends Phaser.Scene {
   constructor(){
@@ -8,7 +9,6 @@ class jeu3 extends Phaser.Scene {
 
 
 init(data){
-
   }
 
 preload(){
@@ -24,35 +24,150 @@ preload(){
 	this.load.image('b1', 'assets/b1.png');
 	this.load.image('b2', 'assets/b2.png');
 	this.load.image('b3', 'assets/b3.png');
+	this.load.image('perdu', 'assets/perdu.png');
+	this.load.image('gagne', 'assets/gagne.png');
 }
 
 create(){
 
-	objet = this.physics.add.staticGroup();
+ 	this.time.addEvent({
+            delay: 10000,
+            callback: () => {
+               this.scene.start("map");
+            },
+        })
+	
 
 
 	this.add.image(1140,580,'jeu3');
-	this.button = this.add.image(1450, 440, 'cut1').setInteractive();
-	this.button = this.add.image(1450, 565, 'cut2').setInteractive();
-	this.button = this.add.image(1450, 730, 'cut3').setInteractive();
-	objets.create(1020,490,'h1');
-	objets.create(1025,455,'h2');
-	objets.create(1025,460,'h3');	
-	objets.create(1020,572,'m1');
-	objets.create(1015,542,'m2');
-	objets.create(1025,800,'b1');
-	objets.create(1025,670,'b2');
-	objets.create(1025,692,'b3');
-	//this.add.image(1025,455,'h2');
-	//this.add.image(1025,460,'h3');
-	//this.add.image(1020,572,'m1');
-	//this.add.image(1015,542,'m2');
-	//this.add.image(1025,800,'b1');
-	//this.add.image(1025,670,'b2');
-	//this.add.image(1025,692,'b3');
+	var h1 = this.add.image(1020,490,'h1');
+	var h2 = this.add.image(1025,455,'h2');
+	var h3 = this.add.image(1025,460,'h3');	
+	var m1 = this.add.image(1020,572,'m1');
+	var m2 = this.add.image(1015,542,'m2');
+	var b1 = this.add.image(1025,800,'b1');
+	var b2 = this.add.image(1025,670,'b2');
+	var b3 = this.add.image(1025,692,'b3');
+	var perdu = this.add.image(1200,230,'perdu');
+	var gagne = this.add.image(1200,230,'gagne');
 	
+	perdu.visible = false;
+	gagne.visible = false;
 	h1.visible = false;
+	h2.visible = false;
+	h3.visible = false;
+	m1.visible = false;
+	m2.visible = false;
+	b1.visible = false;
+	b2.visible = false;
+	b3.visible = false;
+	
+
+
+
+	this.button = this.add.image(1450, 440, 'cut1').setInteractive();
+	this.button.on('pointerdown', (pointer)=>{ 
+    but1 = but1 + 1;
+       
+	
+	if (but1 == 1){
+		h1.visible = true;
+	};
+	if (but1 == 2){
+		h2.visible = true;
+	};
+	if (but1 == 3){
+		h3.visible = true;
+	};
+	if (but1 == 4){
+		perdu.visible = true;
+		this.time.addEvent({
+            delay: 3000,
+           callback: () => {
+               this.scene.start("map");
+            },
+        })
+	
+	};
+	}); 
+
+
+	this.button = this.add.image(1450, 565, 'cut2').setInteractive();
+	this.button.on('pointerdown', (pointer)=>{ 
+    but2 = but2 + 1;
+
+    if (but2 == 1 ){
+		m1.visible = true;
+	};
+	if (but2 == 2 ){
+		m2.visible = true;
+	};
+	if (but2 == 3 ){
+		perdu.visible = true;
+		this.time.addEvent({
+            delay: 3000,
+            callback: () => {
+               this.scene.start("map");
+            },
+        })
+	};
+	});
+
+	this.button = this.add.image(1450, 730, 'cut3').setInteractive();
+	this.button.on('pointerdown', (pointer)=>{ 
+    but3 = but3 + 1;
+	if (but3 == 1 ){
+		b1.visible = true;
+	};
+	if (but3 == 2 ){
+		b2.visible = true;
+	};
+	if (but3 == 3 ){
+		b3.visible = true;
+	};
+	if (but3 == 4 ){
+		perdu.visible = true;
+		this.time.addEvent({
+            delay: 3000,
+           callback: () => {
+               this.scene.start("map");
+            },
+        })
+	};
+	});
+
+
+	if (but1 == 3){
+		if (but2 == 2){
+			if(but3 == 3){
+				gagne.visible = true;
+			}
+		}
+	}
+		//this.scene.start("map");
+		// gagne.visible = true;
+		//this.time.addEvent({
+            //delay: 3000,
+           //callback: () => {
+               //this.scene.start("map"); //Ton événement au bout du temps "delay: 9000"
+            //},
+        //})
+	//};
+
+
+
+
+
 }
+
+
+
+
+	//mettre un message perdu gagné 
+	//relancé timer 3 sec
+	//avec retour map
+
+
 
 update(){
  
