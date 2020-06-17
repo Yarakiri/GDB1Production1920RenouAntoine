@@ -121,10 +121,10 @@ create(){
 	dauphin2.body.velocity.x=-100;
 
 	dragon = this.physics.add.sprite(200,300,'dragon');
-	dragon.body.velocity.y=150;
+	dragon.body.velocity.y=100;
 
 	dragon2 = this.physics.add.sprite(1500,600,'dragon');
-	dragon2.body.velocity.x=-150;
+	dragon2.body.velocity.x=-100;
 
 	fleur = this.physics.add.sprite(1800,500,'fleur');
 	fleur.body.velocity.y=100;
