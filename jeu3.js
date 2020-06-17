@@ -1,6 +1,7 @@
 var but1 = 0;
 var but2 = 0;
 var but3 = 0;
+var total = 0;
 
 class jeu3 extends Phaser.Scene {
   constructor(){
@@ -53,14 +54,14 @@ create(){
 	
 	perdu.visible = false;
 	gagne.visible = false;
-	h1.visible = false;
-	h2.visible = false;
-	h3.visible = false;
-	m1.visible = false;
-	m2.visible = false;
-	b1.visible = false;
-	b2.visible = false;
-	b3.visible = false;
+	h1.setVisible(false);
+	h2.setVisible(false);
+	h3.setVisible(false);
+	m1.setVisible(false);
+	m2.setVisible(false);
+	b1.setVisible(false);
+	b2.setVisible(false);
+	b3.setVisible(false);
 	
 
 
@@ -76,10 +77,20 @@ create(){
 	if (but1 == 2){
 		h2.visible = true;
 	};
-	if (but1 == 3){
+	if (but1 == 3){				
 		h3.visible = true;
+		total = total +1;
 	};
-	if (but1 == 4){
+	if (total == 3){			//condition de victoire
+		gagne.visible = true;
+		this.time.addEvent({
+        delay: 3000,
+        callback: () => {
+            this.scene.start("map");
+        },
+    })
+	}
+	if (but1 == 4){				//condition de defaite
 		perdu.visible = true;
 		this.time.addEvent({
             delay: 3000,
@@ -101,8 +112,18 @@ create(){
 	};
 	if (but2 == 2 ){
 		m2.visible = true;
+		total = total +1;
 	};
-	if (but2 == 3 ){
+	if (total == 3){			//condition de victoire
+		gagne.visible = true;
+		this.time.addEvent({
+        delay: 3000,
+        callback: () => {
+            this.scene.start("map");
+        },
+    })
+	};
+	if (but2 == 3 ){			//condition de defaite
 		perdu.visible = true;
 		this.time.addEvent({
             delay: 3000,
@@ -124,8 +145,18 @@ create(){
 	};
 	if (but3 == 3 ){
 		b3.visible = true;
+		total = total +1;
 	};
-	if (but3 == 4 ){
+	if (total == 3){			//condition de victoire
+		gagne.visible = true;
+		this.time.addEvent({
+        delay: 3000,
+        callback: () => {
+            this.scene.start("map");
+        },
+    })
+	}
+	if (but3 == 4 ){			//condition de defaite
 		perdu.visible = true;
 		this.time.addEvent({
             delay: 3000,
@@ -135,43 +166,8 @@ create(){
         })
 	};
 	});
-
-
-	if (but1 == 3){
-		if (but2 == 2){
-			if(but3 == 3){
-				gagne.visible = true;
-			}
-		}
-	}
-		//this.scene.start("map");
-		// gagne.visible = true;
-		//this.time.addEvent({
-            //delay: 3000,
-           //callback: () => {
-               //this.scene.start("map"); //Ton événement au bout du temps "delay: 9000"
-            //},
-        //})
-	//};
-
-
-
-
-
 }
-
-
-
-
-	//mettre un message perdu gagné 
-	//relancé timer 3 sec
-	//avec retour map
-
-
-
-update(){
- 
-}
+update(){}
 
 
 }

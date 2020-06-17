@@ -1,3 +1,20 @@
+var aile;
+var dauphin;
+var dragon;
+var fleur;
+var poule;
+var raie;
+var tortue;
+var dragon2;
+var aile2;
+var dauphin2;
+var dragon2;
+var fleur2;
+var poule2;
+var raie2;
+var tortue2;
+
+
 class jeu1 extends Phaser.Scene {
   constructor(){
     super("jeu1")
@@ -19,14 +36,17 @@ preload(){
 	this.load.image('rep1', 'assets/aile.png');
 	this.load.image('rep2', 'assets/fleur.png');
 	this.load.image('rep3', 'assets/totem.png');
-	this.load.image('gagne', 'assets/gagne.png');
-	this.load.image('perdu', 'assets/perdu.png');
+	this.load.image('gagne', 'assets/gagne-z1.png');
+	this.load.image('perdu', 'assets/perdu-z1.png');
+
 }
 
 create(){
+	
 	this.add.image(1140,540,'jeu1');
-	var perdu = this.add.image(1140,900,'perdu');
-	var gagne = this.add.image(1140,900,'gagne');
+
+	var perdu = this.add.image(1140,800,'perdu');
+	var gagne = this.add.image(1140,800,'gagne');
 	
 	perdu.visible = false;
 	gagne.visible = false;
@@ -74,11 +94,51 @@ create(){
             },
         })
 	});
+
+	aile = this.physics.add.sprite(400,700,'aile');
+	aile.body.velocity.x=100;
+
+	aile2 = this.physics.add.sprite(1400,800,'aile');
+	aile2.body.velocity.y=-100;
+
+	dauphin = this.physics.add.sprite(200,400,'dauphin');
+	dauphin.body.velocity.x=100;
+
+	dauphin2 = this.physics.add.sprite(1700,800,'dauphin');
+	dauphin2.body.velocity.x=-100;
+
+	dragon = this.physics.add.sprite(200,300,'dragon');
+	dragon.body.velocity.y=150;
+
+	dragon2 = this.physics.add.sprite(1500,600,'dragon');
+	dragon2.body.velocity.x=-150;
+
+	fleur = this.physics.add.sprite(1800,500,'fleur');
+	fleur.body.velocity.y=100;
+
+	fleur2 = this.physics.add.sprite(800,500,'fleur');
+	fleur2.body.velocity.x=100;
+
+	poule = this.physics.add.sprite(600,600,'poule');
+	poule.body.velocity.x=100;
+
+	poule2 = this.physics.add.sprite(100,800,'poule');
+	poule2.body.velocity.y=-100;
+
+	raie = this.physics.add.sprite(1200,700,'raie');
+	raie.body.velocity.x=100;
+
+	raie2 = this.physics.add.sprite(200,200,'raie');
+	raie2.body.velocity.y=100;
+
+	tortue = this.physics.add.sprite(1700,100,'tortue');
+	tortue.body.velocity.x=-100;
+
+	tortue2 = this.physics.add.sprite(1700,900,'tortue');
+	tortue2.body.velocity.y=-100;
 }
 
-update(){
- 
-}
+update(){}
 
 
 }
