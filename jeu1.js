@@ -25,7 +25,13 @@ init(data){
   }
 
 preload(){
+
 	this.load.image('jeu1', 'assets/jeu1.png'); //Background zone 1
+	this.load.image('gagne', 'assets/gagne-z1.png');
+	this.load.image('perdu', 'assets/perdu-z1.png');
+
+	// Images tatouages
+
 	this.load.image('aile', 'assets/tatouage-aile.png');
 	this.load.image('dauphin', 'assets/tatouage-dauphin.png');
 	this.load.image('dragon', 'assets/tatouage-dragon.png');
@@ -33,11 +39,11 @@ preload(){
 	this.load.image('poule', 'assets/tatouage-poule.png');
 	this.load.image('raie', 'assets/tatouage-raie.png');
 	this.load.image('tortue', 'assets/tatouage-tortue.png');
+
+	// Images boutons
 	this.load.image('rep1', 'assets/aile.png');
 	this.load.image('rep2', 'assets/fleur.png');
 	this.load.image('rep3', 'assets/totem.png');
-	this.load.image('gagne', 'assets/gagne-z1.png');
-	this.load.image('perdu', 'assets/perdu-z1.png');
 
 }
 
@@ -52,6 +58,7 @@ create(){
 	gagne.visible = false;
 
 
+//Timer
 	this.time.addEvent({
         delay: 10000,
         callback: () => {
@@ -60,7 +67,7 @@ create(){
     })
 
 
-
+// Boutons réponse défaite
 
 	this.button = this.add.image(1350, 620, 'rep1').setInteractive();
 	this.button.on('pointerdown', (pointer)=>{ 
@@ -73,6 +80,8 @@ create(){
         })
 	});
 
+// Boutons réponse défaite
+
 	this.button = this.add.image(1600, 620, 'rep2').setInteractive();
 	this.button.on('pointerdown', (pointer)=>{ 
     perdu.visible = true;
@@ -84,6 +93,8 @@ create(){
         })
 	});
 
+// Boutons réponse victoire
+
 	this.button = this.add.image(1850, 620, 'rep3').setInteractive();
 	this.button.on('pointerdown', (pointer)=>{ 
     gagne.visible = true;
@@ -94,6 +105,8 @@ create(){
             },
         })
 	});
+
+// Mouvement des tatouages
 
 	aile = this.physics.add.sprite(400,700,'aile');
 	aile.body.velocity.x=100;
@@ -142,3 +155,5 @@ update(){}
 
 
 }
+
+

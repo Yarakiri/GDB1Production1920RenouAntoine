@@ -17,10 +17,10 @@ preload(){
 create(){
 	this.add.image(1140,540,'zone2');
 	this.button = this.add.sprite(950, 700, 'zone2return').setInteractive();
-	this.button.on('pointerdown', function(){this.scene.start("map");}, this)
+	this.button.on('pointerdown', function(){this.scene.start("map");}, this) // Bouton pour retourner sur la map
 
 	this.button = this.add.sprite(1000, 500, 'zone2start').setInteractive();
-	this.button.on('pointerdown', function(){this.scene.start("jeu2");}, this)
+	this.button.on('pointerdown', function(){this.scene.start("jeu2");}, this)	// Bouton pour commencer le jeu 2
 }
 
 

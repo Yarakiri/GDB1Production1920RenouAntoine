@@ -14,23 +14,36 @@ init(data){
 
 preload(){
 	this.load.image('jeu3', 'assets/jeu3.png'); //Background zone 1
+	this.load.image('perdu', 'assets/perdu.png');
+	this.load.image('gagne', 'assets/gagne.png');
+
+//	Images Boutons
+
 	this.load.image('cut1', 'assets/butt-cut.png');
 	this.load.image('cut2', 'assets/butt-cut.png');
 	this.load.image('cut3', 'assets/butt-cut.png');
+
+// Images partie supérieure 
 	this.load.image('h1', 'assets/h1.png');
 	this.load.image('h2', 'assets/h2.png');
 	this.load.image('h3', 'assets/h3.png');
+
+// Images partie du milieu
+
 	this.load.image('m1', 'assets/m1.png');
 	this.load.image('m2', 'assets/m2.png');
+
+// Images partie inférieure 
+
 	this.load.image('b1', 'assets/b1.png');
 	this.load.image('b2', 'assets/b2.png');
 	this.load.image('b3', 'assets/b3.png');
-	this.load.image('perdu', 'assets/perdu.png');
-	this.load.image('gagne', 'assets/gagne.png');
+
 }
 
 create(){
 
+//	Timer
  	this.time.addEvent({
             delay: 10000,
             callback: () => {
@@ -41,6 +54,9 @@ create(){
 
 
 	this.add.image(1140,580,'jeu3');
+
+//	Image de toutes les partie a couper
+
 	var h1 = this.add.image(1020,490,'h1');
 	var h2 = this.add.image(1025,455,'h2');
 	var h3 = this.add.image(1025,460,'h3');	
@@ -65,12 +81,12 @@ create(){
 	
 
 
+// Découpage partie supérieure
 
 	this.button = this.add.image(1450, 440, 'cut1').setInteractive();
 	this.button.on('pointerdown', (pointer)=>{ 
     but1 = but1 + 1;
-       
-	
+
 	if (but1 == 1){
 		h1.visible = true;
 	};
@@ -102,6 +118,7 @@ create(){
 	};
 	}); 
 
+// Découpage partie du milieu
 
 	this.button = this.add.image(1450, 565, 'cut2').setInteractive();
 	this.button.on('pointerdown', (pointer)=>{ 
@@ -133,6 +150,8 @@ create(){
         })
 	};
 	});
+
+// Découpage partie inférieure
 
 	this.button = this.add.image(1450, 730, 'cut3').setInteractive();
 	this.button.on('pointerdown', (pointer)=>{ 
