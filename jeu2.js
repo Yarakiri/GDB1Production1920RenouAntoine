@@ -30,7 +30,7 @@ class jeu2 extends Phaser.Scene {
 
 		this.load.spritesheet('requin-b','assets/requin-b.png',{frameWidth: 73,frameHeight: 160});
 		this.load.spritesheet('requin-g','assets/requin-g.png',{frameWidth: 158,frameHeight: 80});
-		this.load.spritesheet('surfer-d','assets/surfer-d.png',{frameWidth: 135,frameHeight: 45});
+		this.load.spritesheet('surfer-d','assets/surfer-d.png',{frameWidth: 121,frameHeight: 50});
 		this.load.spritesheet('surfer-h','assets/surfer-h.png',{frameWidth: 41,frameHeight: 150});
 		this.load.spritesheet('timer','assets/timer-drap.png',{frameWidth: 115,frameHeight: 121});
 
@@ -77,7 +77,7 @@ class jeu2 extends Phaser.Scene {
 // Animation perso et requin
     this.anims.create({
       key:'anim_perso_droite',
-      frames: this.anims.generateFrameNumbers('surfer-d', {start: 0, end: 9}),
+      frames: this.anims.generateFrameNumbers('surfer-d', {start: 0, end: 7}),
       frameRate: 9,
       repeat: -1
     });
