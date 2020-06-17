@@ -18,7 +18,7 @@ preload(){
 }
 
 create(){
-	this.add.image(1165,540,'map');
+	this.add.image(1157,540,'map');
 	this.button = this.add.image(950, 400, 'buttzone1').setInteractive();
 	this.button.on('pointerdown', function(){this.scene.start("map1");}, this)  // Bouton pour zoom en zone 1
 
