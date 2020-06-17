@@ -109,7 +109,7 @@ class jeu2 extends Phaser.Scene {
     key:'timer-drap',
     frames: this.anims.generateFrameNumbers('timer', {start: 0, end: 16}),
     frameRate: 1.5,
-    repeat: -1
+    repeat: 0
     });
 
 
@@ -119,7 +119,14 @@ class jeu2 extends Phaser.Scene {
     this.time.addEvent({
     	delay: 10000,
     	callback: () => {
-    	    this.scene.start("map"); 
+    		perdu.visible = true;
+    		this.time.addEvent({
+    				delay: 3000,
+    				callback: () => {
+    	    		this.scene.start("map"); 
+    			},
+   			})
+    	    
     	},
     })
 }

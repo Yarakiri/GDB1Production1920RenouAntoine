@@ -47,12 +47,19 @@ preload(){
 create(){
 
 //	Timer
- 	this.time.addEvent({
-            delay: 10000,
-            callback: () => {
-               this.scene.start("map");
-            },
-        })
+    this.time.addEvent({
+    	delay: 10000,
+    	callback: () => {
+    		perdu.visible = true;
+    		this.time.addEvent({
+    				delay: 3000,
+    				callback: () => {
+    	    		this.scene.start("map"); 
+    			},
+   			})
+    	    
+    	},
+    })
 	
 
 
