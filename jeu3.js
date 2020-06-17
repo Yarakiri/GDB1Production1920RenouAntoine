@@ -2,6 +2,7 @@ var but1 = 0;
 var but2 = 0;
 var but3 = 0;
 var total = 0;
+var timer;
 
 class jeu3 extends Phaser.Scene {
   constructor(){
@@ -39,6 +40,8 @@ preload(){
 	this.load.image('b2', 'assets/b2.png');
 	this.load.image('b3', 'assets/b3.png');
 
+//	Image spritesheet
+	this.load.spritesheet('timer','assets/timer-drap.png',{frameWidth: 115,frameHeight: 121});
 }
 
 create(){
@@ -54,6 +57,7 @@ create(){
 
 
 	this.add.image(1140,580,'jeu3');
+	timer = this.physics.add.sprite(100,100,'timer');
 
 //	Image de toutes les partie a couper
 
@@ -185,8 +189,24 @@ create(){
         })
 	};
 	});
+
+	//	Animation timer
+
+	this.anims.create({
+    key:'timer-drap',
+    frames: this.anims.generateFrameNumbers('timer', {start: 0, end: 16}),
+    frameRate: 1.5,
+    repeat: -1
+    });
 }
-update(){}
+update(){
+
+	//	Animation timer
+
+	timer.anims.play('timer-drap',true);
+	timer.setVelocityY(0);
+	timer.setVelocityX(0);
+}
 
 
 }

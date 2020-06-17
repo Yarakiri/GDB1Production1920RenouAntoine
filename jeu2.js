@@ -8,6 +8,7 @@
 		var perdu = 0;
 		var gagne = 0;
 		var vct;
+		var timer;
 
 class jeu2 extends Phaser.Scene {
 	constructor(){
@@ -31,6 +32,7 @@ class jeu2 extends Phaser.Scene {
 		this.load.spritesheet('requin-g','assets/requin-g.png',{frameWidth: 158,frameHeight: 80});
 		this.load.spritesheet('surfer-d','assets/surfer-d.png',{frameWidth: 135,frameHeight: 45});
 		this.load.spritesheet('surfer-h','assets/surfer-h.png',{frameWidth: 41,frameHeight: 150});
+		this.load.spritesheet('timer','assets/timer-drap.png',{frameWidth: 115,frameHeight: 121});
 
 		this.load.image('droite', 'assets/but-surf-d.png'); // image boutton : surfer sur la droite
 		this.load.image('bas', 'assets/but-surf-b.png'); // image boutton : surfer vers le bas
@@ -58,6 +60,7 @@ class jeu2 extends Phaser.Scene {
 		perdu.visible = false;
 		gagne.visible = false;
 		vct.setAlpha(0);
+		timer = this.physics.add.sprite(100,100,'timer');
 		requin1 = this.physics.add.sprite(450,200,'requin-b');
 		requin2 = this.physics.add.sprite(1350,400,'requin-g');
 		surfer = this.physics.add.sprite(150,1000,'surfer-h');
@@ -102,7 +105,12 @@ class jeu2 extends Phaser.Scene {
     frameRate: 7,
     repeat: -1
     });
-
+    this.anims.create({
+    key:'timer-drap',
+    frames: this.anims.generateFrameNumbers('timer', {start: 0, end: 16}),
+    frameRate: 1.5,
+    repeat: -1
+    });
 
 
  
@@ -117,7 +125,11 @@ class jeu2 extends Phaser.Scene {
 }
 
 	update(){
+//	Animation timer
 
+	timer.anims.play('timer-drap',true);
+	timer.setVelocityY(0);
+	timer.setVelocityX(0);
 //	Animation Requin
 
 	requin1.anims.play('requin-bas',true);

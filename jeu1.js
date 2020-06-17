@@ -13,6 +13,7 @@ var fleur2;
 var poule2;
 var raie2;
 var tortue2;
+var timer;
 
 
 class jeu1 extends Phaser.Scene {
@@ -45,6 +46,9 @@ preload(){
 	this.load.image('rep2', 'assets/fleur.png');
 	this.load.image('rep3', 'assets/totem.png');
 
+	// Sprite animation timer
+	this.load.spritesheet('timer','assets/timer-drap.png',{frameWidth: 115,frameHeight: 121});
+
 }
 
 create(){
@@ -57,6 +61,7 @@ create(){
 	perdu.visible = false;
 	gagne.visible = false;
 
+	timer = this.physics.add.sprite(100,100,'timer');
 
 //Timer
 	this.time.addEvent({
@@ -149,11 +154,23 @@ create(){
 
 	tortue2 = this.physics.add.sprite(1700,900,'tortue');
 	tortue2.body.velocity.y=-100;
+
+//	Animation timer
+
+	this.anims.create({
+    key:'timer-drap',
+    frames: this.anims.generateFrameNumbers('timer', {start: 0, end: 16}),
+    frameRate: 1.5,
+    repeat: -1
+    });
 }
 
-update(){}
+update(){
 
-
+	timer.anims.play('timer-drap',true);
+	timer.setVelocityY(0);
+	timer.setVelocityX(0);
+}
 }
 
 
